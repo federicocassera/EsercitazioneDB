@@ -50,21 +50,21 @@ namespace BankomatSimulator
         /// <returns></returns>
         public EsitoLogin Login(Utente credenziali, out Utente utente, int bancaId)
         {
+            Utente utente1 = new Utente();
             Bankomat2Entities1 ctx = new Bankomat2Entities1();
-            Utente utenteDaValidare = new Utente();
             //ricerco utente sul 
             utente = null;
 
-            var ute = ctx.Utenti.FirstOrDefault(u => u.NomeUtente == credenziali.NomeUtente && u.IdBanca == bancaId);
-            if (ute == null)
+            Utenti utenteDaValidare = ctx.Utenti.FirstOrDefault(u => u.NomeUtente == credenziali.NomeUtente && u.IdBanca == bancaId);
+            if (utenteDaValidare == null)
             {
                 return EsitoLogin.UtentePasswordErrati;
             }
-            if(ute.Bloccato == true)
+            if(utenteDaValidare.Bloccato == true)
             {
                 return EsitoLogin.AccountBloccato;
             }            
-            if (ute.Password == credenziali.Password)
+            if (utenteDaValidare.Password == credenziali.Password)
             {
                 return EsitoLogin.AccessoConsentito;
             }         
