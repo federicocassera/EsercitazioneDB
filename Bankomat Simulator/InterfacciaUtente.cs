@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BankomatSimulator
 {
-   
+
     class InterfacciaUtente
     {
         enum Richiesta
@@ -21,12 +21,15 @@ namespace BankomatSimulator
             Uscita
         };
 
+        //private List<Utente> _utenti;
+
         private SortedList<int, Banca> _banche;
         private Banca _bancaCorrente;
 
-        public InterfacciaUtente(SortedList<int,Banca> banche)
+        public InterfacciaUtente(SortedList<int, Banca> banche)
         {
             _banche = banche;
+            //_utenti = utenti;   
         }
 
         /// <summary>
@@ -38,7 +41,7 @@ namespace BankomatSimulator
             Console.WriteLine("**************************************************");
             Console.WriteLine("*              Bankomat Simulator               *");
             Console.WriteLine("**************************************************");
-            Console.WriteLine("".PadLeft((50 - titoloMenu.Length) / 2) 
+            Console.WriteLine("".PadLeft((50 - titoloMenu.Length) / 2)
                 + titoloMenu);
             Console.WriteLine("--------------------------------------------------");
             return;
@@ -53,18 +56,18 @@ namespace BankomatSimulator
         {
             string rispostaUtente;
 
-            
+
             Console.Write("Scelta: ");
             rispostaUtente = Console.ReadKey().KeyChar.ToString();
-            if (!Int32.TryParse(rispostaUtente, out int scelta) || 
-                !(min <= scelta && scelta <= max) )
+            if (!Int32.TryParse(rispostaUtente, out int scelta) ||
+                !(min <= scelta && scelta <= max))
             {
                 scelta = -1;
                 Console.WriteLine("");
-                Console.WriteLine($"Scelta non consentita - {rispostaUtente}" );
+                Console.WriteLine($"Scelta non consentita - {rispostaUtente}");
                 Console.Write("Premere un tasto per proseguire");
                 Console.ReadKey();
-            }           
+            }
             return scelta;
         }
 
@@ -79,18 +82,20 @@ namespace BankomatSimulator
             while (scelta == -1)
             {
                 StampaIntestazione("Selezione Banca");
-
+                
                 foreach (var banca in _banche)
                 {
-                    Console.WriteLine($"{banca.Key.ToString()} - {banca.Value.Nome}");
+                    Console.WriteLine($"{banca.Key} - {banca.Value.Nome}");
                 }
                 Console.WriteLine("0 - Uscita");
 
-                scelta = ScegliVoceMenu(0, _banche.Count);
+                //int max = _bancheDb.Banche.Count();
+
+                scelta = ScegliVoceMenu(0, _banche.Count());
             }
 
             return scelta;
-        
+
         }
 
         /// <summary>
@@ -106,14 +111,14 @@ namespace BankomatSimulator
             bool autenticato = false;
 
             Utente credenziali = new Utente();
-            
+
             StampaIntestazione($"Login - {_bancaCorrente.Nome}");
 
             Console.Write("Nome utente: ");
             credenziali.NomeUtente = Console.ReadLine();
             Console.Write("Password: ");
             credenziali.Password = Console.ReadLine();
-
+            //query
             Banca.EsitoLogin esitoLogin =
                 _bancaCorrente.Login(credenziali, out Utente utente);
 
@@ -122,7 +127,7 @@ namespace BankomatSimulator
                 case Banca.EsitoLogin.PasswordErrata:
                     Console.WriteLine($"Password errata - " +
                         $"{utente.TentativiDiAccessoResidui} " +
-                        @"tentativ{0} residu{0}", utente.TentativiDiAccessoResidui == 1 ? "o" : "i" );
+                        @"tentativ{0} residu{0}", utente.TentativiDiAccessoResidui == 1 ? "o" : "i");
                     Console.Write("Premere un tasto per proseguire");
                     Console.ReadKey();
                     break;
@@ -141,7 +146,7 @@ namespace BankomatSimulator
                     autenticato = true;
                     break;
             }
-            
+
             return autenticato;
         }
 
@@ -153,30 +158,34 @@ namespace BankomatSimulator
         /// <returns></returns>
         private Banca.Funzionalita MenuPrincipale()
         {
+            Bankomat2Entities1 ctx = new Bankomat2Entities1();
             int scelta = -1;
-            
+
             while (scelta == -1)
             {
                 StampaIntestazione($"Menu principale - {_bancaCorrente.Nome}");
-
-                foreach (var funzionalita in _bancaCorrente.ElencoFunzionalita)
+                int key = 1;
+                foreach (var funzionalita in ctx.Funzionalita)
                 {
-                    Console.WriteLine($"{funzionalita.Key.ToString()} - {funzionalita.Value.ToString()}");
+                    //_bancaCorrente.ElencoFunzionalita.Add(key, funzionalita.Funzionalita);
+                    //_bancaCorrente.ElencoFunzionalita = funzionalita.Funzionalita;
+                    Console.WriteLine($"{funzionalita.Nome}");// - {funzionalita.Value.ToString()}");
+                    key++;
                 }
                 Console.WriteLine("0 - Uscita");
 
-                scelta = ScegliVoceMenu(0, _bancaCorrente.ElencoFunzionalita.Count);
+                scelta = ScegliVoceMenu(0, _bancaCorrente.ElencoFunzionalita.Count());
             }
 
-            return scelta == 0 ? 
+            return scelta == 0 ?
                 Banca.Funzionalita.Uscita :
                 _bancaCorrente.ElencoFunzionalita[scelta];
         }
 
-      /// <summary>
-      /// Permette all'utente di effettuare un versamento nel conto corrente.
-      /// </summary>
-      /// <returns></returns>
+        /// <summary>
+        /// Permette all'utente di effettuare un versamento nel conto corrente.
+        /// </summary>
+        /// <returns></returns>
         private bool Versamento()
         {
             string risposta;
@@ -184,9 +193,10 @@ namespace BankomatSimulator
 
             StampaIntestazione($"Versamento - {_bancaCorrente.Nome}");
             Console.Write("Inserisci l'importo del versamento: ");
-            
+
             risposta = Console.ReadLine();
-            if (!double.TryParse(risposta, out double importoVersamento)) { 
+            if (!double.TryParse(risposta, out double importoVersamento))
+            {
                 Console.WriteLine("Operazione annullata - Inserire un numero");
                 Console.Write("Premere un tasto per proseguire");
                 Console.ReadKey();
@@ -195,8 +205,8 @@ namespace BankomatSimulator
 
             contoCorrente.Versamento(importoVersamento);
 
-             Console.WriteLine($"Operazione completata - Conteggio saldo: " +
-                    $"{contoCorrente.Saldo} ");
+            Console.WriteLine($"Operazione completata - Conteggio saldo: " +
+                   $"{contoCorrente.Saldo} ");
 
             Console.Write("Premere un tasto per proseguire");
             Console.ReadKey();
@@ -217,7 +227,7 @@ namespace BankomatSimulator
             Console.WriteLine($"Saldo conto: {report.saldo}");
             Console.WriteLine($"Data ultimo versamento: {report.dataUltimoVersamento}");
             Console.WriteLine($"Data / ora attuale: {report.dataCorrente}");
-          
+
 
             Console.Write("Premere un tasto per proseguire");
             Console.ReadKey();
@@ -247,7 +257,7 @@ namespace BankomatSimulator
                 return;
             }
 
-            if(contoCorrente.Prelievo(importoDaPrelevare) == false)
+            if (contoCorrente.Prelievo(importoDaPrelevare) == false)
             {
                 Console.WriteLine($"Impossibile procedere al prelievo: saldo non sufficiente!");
             }
@@ -256,7 +266,7 @@ namespace BankomatSimulator
                 Console.WriteLine($"Operazione completata - Importo prelevato: " +
                   $"{importoDaPrelevare} ");
             }
-       
+
 
             Console.Write("Premere un tasto per proseguire");
             Console.ReadKey();
@@ -271,6 +281,7 @@ namespace BankomatSimulator
         {
             int rispostaUtente = 0;
             Richiesta richiesta = Richiesta.SchermataDiBenvenuto;
+            
 
             while (richiesta != Richiesta.Uscita)
             {
@@ -278,12 +289,12 @@ namespace BankomatSimulator
                 {
                     case Richiesta.SchermataDiBenvenuto:
                         rispostaUtente = SchermataDiBenvenuto();
-                        
+
                         if (rispostaUtente == 0)
                             richiesta = Richiesta.Uscita;
                         else
                         {
-                            
+
                             _bancaCorrente = _banche[rispostaUtente];
                             richiesta = Richiesta.Login;
                         }
@@ -295,7 +306,7 @@ namespace BankomatSimulator
                             richiesta = Richiesta.SchermataDiBenvenuto;
                         break;
                     case Richiesta.MenuPrincipale:
-                        switch ( MenuPrincipale() )
+                        switch (MenuPrincipale())
                         {
                             case Banca.Funzionalita.Uscita:
                                 richiesta = Richiesta.SchermataDiBenvenuto;
@@ -326,7 +337,7 @@ namespace BankomatSimulator
                     case Richiesta.Prelievo:
                         Prelievo();
                         richiesta = Richiesta.MenuPrincipale;
-                        break;                
+                        break;
                     default:
                         break;
                 }

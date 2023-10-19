@@ -38,6 +38,6 @@ namespace BankomatSimulator
                     _bloccato = true;
                 }
             }
-        }      
+        }
     }
 }

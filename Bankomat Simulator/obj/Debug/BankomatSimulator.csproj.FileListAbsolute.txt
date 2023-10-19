@@ -14,3 +14,42 @@ C:\Users\giuseppe.parisi\Desktop\Bankomat Simulator_old\obj\Debug\BankomatSimula
 C:\Users\giuseppe.parisi\Desktop\Bankomat Simulator_old\obj\Debug\BankomatSimulator.csproj.CoreCompileInputs.cache
 C:\Users\giuseppe.parisi\Desktop\Bankomat Simulator_old\obj\Debug\BankomatSimulator.exe
 C:\Users\giuseppe.parisi\Desktop\Bankomat Simulator_old\obj\Debug\BankomatSimulator.pdb
+C:\Users\federico.cassera\Source\Repos\Esercitazione_290923\Bankomat Simulator\bin\Debug\BankomatSimulator.exe.config
+C:\Users\federico.cassera\Source\Repos\Esercitazione_290923\Bankomat Simulator\bin\Debug\BankomatSimulator.exe
+C:\Users\federico.cassera\Source\Repos\Esercitazione_290923\Bankomat Simulator\bin\Debug\BankomatSimulator.pdb
+C:\Users\federico.cassera\Source\Repos\Esercitazione_290923\Bankomat Simulator\obj\Debug\BankomatSimulator.csproj.AssemblyReference.cache
+C:\Users\federico.cassera\Source\Repos\Esercitazione_290923\Bankomat Simulator\obj\Debug\BankomatSimulator.csproj.SuggestedBindingRedirects.cache
+C:\Users\federico.cassera\Source\Repos\Esercitazione_290923\Bankomat Simulator\obj\Debug\BankomatSimulator.csproj.CoreCompileInputs.cache
+C:\Users\federico.cassera\Source\Repos\Esercitazione_290923\Bankomat Simulator\obj\Debug\BankomatSimulator.exe
+C:\Users\federico.cassera\Source\Repos\Esercitazione_290923\Bankomat Simulator\obj\Debug\BankomatSimulator.pdb
+C:\Users\federico.cassera\Source\Repos\Esercitazione_290923\Bankomat Simulator\bin\Debug\EntityFramework.dll
+C:\Users\federico.cassera\Source\Repos\Esercitazione_290923\Bankomat Simulator\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\federico.cassera\Source\Repos\Esercitazione_290923\Bankomat Simulator\bin\Debug\EntityFramework.xml
+C:\Users\federico.cassera\Source\Repos\Esercitazione_290923\Bankomat Simulator\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\federico.cassera\Source\Repos\Esercitazione_290923\Bankomat Simulator\obj\Debug\BankomatSimulator.csproj.CopyComplete
+C:\Users\federico.cassera\OneDrive - Beta 80 Spa Software e Sistemi\Desktop\Esercitazione_290923\Bankomat Simulator\bin\Debug\BankomatSimulator.exe.config
+C:\Users\federico.cassera\OneDrive - Beta 80 Spa Software e Sistemi\Desktop\Esercitazione_290923\Bankomat Simulator\bin\Debug\BankomatSimulator.exe
+C:\Users\federico.cassera\OneDrive - Beta 80 Spa Software e Sistemi\Desktop\Esercitazione_290923\Bankomat Simulator\bin\Debug\BankomatSimulator.pdb
+C:\Users\federico.cassera\OneDrive - Beta 80 Spa Software e Sistemi\Desktop\Esercitazione_290923\Bankomat Simulator\bin\Debug\EntityFramework.dll
+C:\Users\federico.cassera\OneDrive - Beta 80 Spa Software e Sistemi\Desktop\Esercitazione_290923\Bankomat Simulator\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\federico.cassera\OneDrive - Beta 80 Spa Software e Sistemi\Desktop\Esercitazione_290923\Bankomat Simulator\bin\Debug\EntityFramework.xml
+C:\Users\federico.cassera\OneDrive - Beta 80 Spa Software e Sistemi\Desktop\Esercitazione_290923\Bankomat Simulator\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\federico.cassera\OneDrive - Beta 80 Spa Software e Sistemi\Desktop\Esercitazione_290923\Bankomat Simulator\obj\Debug\BankomatSimulator.csproj.AssemblyReference.cache
+C:\Users\federico.cassera\OneDrive - Beta 80 Spa Software e Sistemi\Desktop\Esercitazione_290923\Bankomat Simulator\obj\Debug\BankomatSimulator.csproj.SuggestedBindingRedirects.cache
+C:\Users\federico.cassera\OneDrive - Beta 80 Spa Software e Sistemi\Desktop\Esercitazione_290923\Bankomat Simulator\obj\Debug\BankomatSimulator.csproj.CoreCompileInputs.cache
+C:\Users\federico.cassera\OneDrive - Beta 80 Spa Software e Sistemi\Desktop\Esercitazione_290923\Bankomat Simulator\obj\Debug\BankomatSimulator.csproj.CopyComplete
+C:\Users\federico.cassera\OneDrive - Beta 80 Spa Software e Sistemi\Desktop\Esercitazione_290923\Bankomat Simulator\obj\Debug\BankomatSimulator.exe
+C:\Users\federico.cassera\OneDrive - Beta 80 Spa Software e Sistemi\Desktop\Esercitazione_290923\Bankomat Simulator\obj\Debug\BankomatSimulator.pdb
+C:\Users\federico.cassera\Desktop\dbSQL .net\Esercitazione_290923\Bankomat Simulator\bin\Debug\BankomatSimulator.exe.config
+C:\Users\federico.cassera\Desktop\dbSQL .net\Esercitazione_290923\Bankomat Simulator\bin\Debug\BankomatSimulator.exe
+C:\Users\federico.cassera\Desktop\dbSQL .net\Esercitazione_290923\Bankomat Simulator\bin\Debug\BankomatSimulator.pdb
+C:\Users\federico.cassera\Desktop\dbSQL .net\Esercitazione_290923\Bankomat Simulator\bin\Debug\EntityFramework.dll
+C:\Users\federico.cassera\Desktop\dbSQL .net\Esercitazione_290923\Bankomat Simulator\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\federico.cassera\Desktop\dbSQL .net\Esercitazione_290923\Bankomat Simulator\bin\Debug\EntityFramework.xml
+C:\Users\federico.cassera\Desktop\dbSQL .net\Esercitazione_290923\Bankomat Simulator\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\federico.cassera\Desktop\dbSQL .net\Esercitazione_290923\Bankomat Simulator\obj\Debug\BankomatSimulator.csproj.AssemblyReference.cache
+C:\Users\federico.cassera\Desktop\dbSQL .net\Esercitazione_290923\Bankomat Simulator\obj\Debug\BankomatSimulator.csproj.SuggestedBindingRedirects.cache
+C:\Users\federico.cassera\Desktop\dbSQL .net\Esercitazione_290923\Bankomat Simulator\obj\Debug\BankomatSimulator.csproj.CoreCompileInputs.cache
+C:\Users\federico.cassera\Desktop\dbSQL .net\Esercitazione_290923\Bankomat Simulator\obj\Debug\BankomatSimulator.csproj.CopyComplete
+C:\Users\federico.cassera\Desktop\dbSQL .net\Esercitazione_290923\Bankomat Simulator\obj\Debug\BankomatSimulator.exe
+C:\Users\federico.cassera\Desktop\dbSQL .net\Esercitazione_290923\Bankomat Simulator\obj\Debug\BankomatSimulator.pdb

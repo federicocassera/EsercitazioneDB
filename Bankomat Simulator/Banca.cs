@@ -7,7 +7,7 @@ using static BankomatSimulator.ContoCorrente;
 
 namespace BankomatSimulator
 {
- 
+
     class Banca
     {
         public enum Funzionalita
@@ -31,7 +31,7 @@ namespace BankomatSimulator
 
         private string _nome;
         private List<Utente> _utenti;
-        private SortedList<int,Funzionalita> _funzionalita;
+        private SortedList<int, Funzionalita> _funzionalita;
 
 
         private Utente _utenteCorrente;
@@ -50,15 +50,19 @@ namespace BankomatSimulator
         /// <returns></returns>
         public EsitoLogin Login(Utente credenziali, out Utente utente)
         {
-            Utente utenteDaValidare = null;
+            Bankomat2Entities1 ctx = new Bankomat2Entities1();
+            Utente utenteDaValidare = new Utente();
             //ricerco utente sul 
             utente = null;
 
-            foreach (var elem in Utenti)
+            foreach (var elem in ctx.Utenti)
             {
-                if(elem.NomeUtente == credenziali.NomeUtente)
+                if (elem.NomeUtente == credenziali.NomeUtente)
                 {
-                    utenteDaValidare = elem;
+                    Utente u = new Utente();
+                    u.NomeUtente = elem.NomeUtente;
+                    u.Password = elem.Password;
+                    utenteDaValidare = u;
                     break;
                 }
             }
@@ -66,8 +70,8 @@ namespace BankomatSimulator
             {
                 return EsitoLogin.UtentePasswordErrati;
             }
-              
-            
+
+
             if (credenziali.Password != utenteDaValidare.Password)
             {
                 utente = utenteDaValidare;
@@ -80,13 +84,19 @@ namespace BankomatSimulator
             }
             else
             {
-                utente = utenteDaValidare;
+                Utente u = new Utente();
+                u.NomeUtente = utenteDaValidare.NomeUtente;
+                u.Password = utenteDaValidare.Password;
+                u.contoCorrente = utenteDaValidare.contoCorrente;
+                u.TentativiDiAccessoErrati = utenteDaValidare.TentativiDiAccessoErrati;
+                utente = u;
+
                 if (utenteDaValidare.Bloccato)
                 {
                     return EsitoLogin.AccountBloccato;
                 }
                 utenteDaValidare.TentativiDiAccessoErrati = 0;
-                return EsitoLogin.AccessoConsentito;   
+                return EsitoLogin.AccessoConsentito;
             }
         }
 
