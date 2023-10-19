@@ -167,7 +167,7 @@ namespace BankomatSimulator
                 int key = 1;
                 foreach (var funzionalita in ctx.Funzionalita)
                 {
-                    //_bancaCorrente.ElencoFunzionalita.Add(key, funzionalita.Funzionalita);
+                    //_bancaCorrente.ElencoFunzionalita.Add(key, funzionalita.Nome);
                     //_bancaCorrente.ElencoFunzionalita = funzionalita.Funzionalita;
                     Console.WriteLine($"{funzionalita.Nome}");// - {funzionalita.Value.ToString()}");
                     key++;
