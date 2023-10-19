@@ -48,53 +48,67 @@ namespace BankomatSimulator
         /// </summary>
         /// <param name="credenziali">Dati inseriti dall'utente </param>
         /// <returns></returns>
-        public EsitoLogin Login(Utente credenziali, out Utente utente)
+        public EsitoLogin Login(Utente credenziali, out Utente utente, int bancaId)
         {
             Bankomat2Entities1 ctx = new Bankomat2Entities1();
             Utente utenteDaValidare = new Utente();
             //ricerco utente sul 
             utente = null;
 
-            foreach (var elem in ctx.Utenti)
-            {
-                if (elem.NomeUtente == credenziali.NomeUtente)
-                {
-                    Utente u = new Utente();
-                    u.NomeUtente = elem.NomeUtente;
-                    u.Password = elem.Password;
-                    utenteDaValidare = u;
-                    break;
-                }
-            }
-            if (utenteDaValidare == null)
+            var ute = ctx.Utenti.FirstOrDefault(u => u.NomeUtente == credenziali.NomeUtente && u.IdBanca == bancaId);
+            if (ute == null)
             {
                 return EsitoLogin.UtentePasswordErrati;
             }
-
-
-            if (credenziali.Password != utenteDaValidare.Password)
+            if(ute.Bloccato == true)
             {
-                utente = utenteDaValidare;
-                utenteDaValidare.TentativiDiAccessoErrati++;
-                if (utenteDaValidare.Bloccato)
-                {
-                    return EsitoLogin.AccountBloccato;
-                }
-                return EsitoLogin.PasswordErrata;
-            }
-            else
+                return EsitoLogin.AccountBloccato;
+            }            
+            if (ute.Password == credenziali.Password)
             {
-                Utente u = new Utente();
-                u.NomeUtente = utenteDaValidare.NomeUtente;
-                u.Password = utenteDaValidare.Password;
-                u.contoCorrente = utenteDaValidare.contoCorrente;
-                u.TentativiDiAccessoErrati = utenteDaValidare.TentativiDiAccessoErrati;
-                utente = u;
+                return EsitoLogin.AccessoConsentito;
+            }         
 
-                if (utenteDaValidare.Bloccato)
-                {
-                    return EsitoLogin.AccountBloccato;
-                }
+            //foreach (var elem in ctx.Utenti)
+            //{
+            //    if (elem.NomeUtente == credenziali.NomeUtente)
+            //    {
+            //        Utente u = new Utente();
+            //        u.NomeUtente = elem.NomeUtente;
+            //        u.Password = elem.Password;
+            //        utenteDaValidare = u;
+            //        break;
+            //    }
+            //}
+            //if (utenteDaValidare == null)
+            //{
+            //    return EsitoLogin.UtentePasswordErrati;
+            //}
+
+
+            //if (credenziali.Password != utenteDaValidare.Password)
+            //{
+            //    utente = utenteDaValidare;
+            //    utenteDaValidare.TentativiDiAccessoErrati++;
+            //    if (utenteDaValidare.Bloccato)
+            //    {
+            //        return EsitoLogin.AccountBloccato;
+            //    }
+            //    return EsitoLogin.PasswordErrata;
+            //}
+            //else
+            //{
+            //    Utente u = new Utente();
+            //    u.NomeUtente = utenteDaValidare.NomeUtente;
+            //    u.Password = utenteDaValidare.Password;
+            //    u.contoCorrente = utenteDaValidare.contoCorrente;
+            //    u.TentativiDiAccessoErrati = utenteDaValidare.TentativiDiAccessoErrati;
+            //    utente = u;
+
+            //    if (utenteDaValidare.Bloccato)
+            //    {
+            //        return EsitoLogin.AccountBloccato;
+            //    }
                 utenteDaValidare.TentativiDiAccessoErrati = 0;
                 return EsitoLogin.AccessoConsentito;
             }
